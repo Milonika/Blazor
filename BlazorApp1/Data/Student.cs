@@ -15,15 +15,16 @@ namespace BlazorApp1.Data
 
         public Student(string name, string surname, int group, string faculty)
         {
-            name = Name;
-            surname = Surname;
-            group = Group;
-            faculty = Faculty;
+            Name = name;
+            Surname = surname;
+            Group = group;
+            Faculty = faculty;
         }
 
-        public static void AddToList(Student student)
-        { 
-            stud.Add(student);
+        public static void AddToList(string namep, string surnamep, int groupp, string facultyp)
+        {
+            Student std = new Student(namep, surnamep, groupp, facultyp);
+            stud.Add(std);
         }
         
         public static List<Student> GetStudents()
