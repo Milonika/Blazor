@@ -1,0 +1,124 @@
+﻿@using BlazorApp1.Data
+@page "/Hello"
+
+<h1>Hi, here is some info!</h1>
+
+<button class="btn btn-primary" @onclick="GetSt">Список студентов</button>
+
+@if (studentslst == null)
+
+
+
+@if (studentslst == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Group</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var stud in studentslst)
+            {
+                <tr>
+                    <td>@stud.Name</td>
+                    <td>@stud.Surname</td>
+                    <td>@stud.Group</td>
+                    <td>@stud.Faculty</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<button class="btn btn-primary" @onclick="GetGame">Список Игр</button>
+
+@if (GameList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Players</th>
+                <th>Size</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in GameList)
+            {
+                <tr>
+                    <td>@game.Name</td>
+                    <td>@game.Category</td>
+                    <td>@game.Players</td>
+                    <td>@game.Size</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<button class="btn btn-primary" @onclick="GetMusic">Список Музыки</button>
+
+@if (MusicList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mus in MusicList)
+            {
+                <tr>
+                    <td>@mus.Name</td>
+                    <td>@mus.Author</td>
+                    <td>@mus.Category</td>
+                    <td>@mus.Time</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    public static List<Student> studentslst;
+    private void GetSt()
+    {
+        studentslst = Student.GetStudents();
+    }
+
+    public static List<Game> GameList;
+    private void GetGame()
+    {
+        GameList = Game.GetGame();
+    }
+
+    public static List<Music> MusicList;
+    private void GetMusic()
+    {
+        MusicList = Music.GetMusic();
+    }
+}
+
+
+
