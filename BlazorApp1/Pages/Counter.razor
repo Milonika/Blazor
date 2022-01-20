@@ -1,16 +1,45 @@
 ﻿@page "/counter"
+@using BlazorApp1.Data
+<h1>Страница регистрации</h1>
 
-<h1>Counter</h1>
+<p>@*Current count: @currentCount*@</p>
 
-<p>Current count: @currentCount</p>
+@*<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>*@
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<div class="students">
+    <p><b>Имя:</b></p>
+    <p><input type="text" @bind-value="studname" /></p>
+    <p><b>Фамилия:</b></p>
+    <p><input type="text" @bind-value="studsur" /></p>
+    <p><b>Группа:</b></p>
+    <p><input type="number" @bind-value="studgroup" /></p>
+    <p><b>Факультет:</b></p>
+    <p><input type="text" @bind-value="studfaculty" /></p>
+</div>
+
+<button class="btn registr" @onclick="Regis">
+    Регистрация
+</button>
+
 
 @code {
-    private int currentCount = 0;
+    //private int currentCount = 0;
 
-    private void IncrementCount()
+    //private void IncrementCount()
+    //{
+    //    currentCount++;
+    //}
+
+    private string studname;
+    private string studsur;
+    private int studgroup;
+    private string studfaculty;
+
+
+    private void Regis()
     {
-        currentCount++;
+        Student.AddToList(new Student(studname, studsur, studgroup, studfaculty));
     }
+
 }
+

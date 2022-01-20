@@ -5,15 +5,12 @@
 
 <button class="btn btn-primary" @onclick="GetSt">Список студентов</button>
 
-@if (studentslst == null)
-
-
 
 @if (studentslst == null)
 {
     <p><em>Loading...</em></p>
 }
-else
+else if (GameList == null && MusicList == null)
 {
     <table class="table">
         <thead>
@@ -44,7 +41,7 @@ else
 {
     <p><em>Loading...</em></p>
 }
-else
+else if (studentslst == null && MusicList == null)
 {
     <table class="table">
         <thead>
@@ -75,7 +72,7 @@ else
 {
     <p><em>Loading...</em></p>
 }
-else
+else if (studentslst == null && GameList == null)
 {
     <table class="table">
         <thead>
@@ -101,23 +98,30 @@ else
 }
 
 @code {
-    public static List<Student> studentslst;
+    public static List<Student> studentslst { get; set; }
     private void GetSt()
     {
         studentslst = Student.GetStudents();
+        GameList = null;
+        MusicList = null;
     }
 
     public static List<Game> GameList;
     private void GetGame()
     {
         GameList = Game.GetGame();
+        MusicList = null;
+        studentslst = null;
     }
 
     public static List<Music> MusicList;
     private void GetMusic()
     {
         MusicList = Music.GetMusic();
+        GameList = null;
+        studentslst = null;
     }
+
 }
 
 

@@ -11,10 +11,7 @@ namespace BlazorApp1.Data
         public string Surname { get; set; }
         public int Group { get; set; }
         public string Faculty { get; set; }
-
-        public Student()
-        {
-        }
+        static List<Student> stud = new List<Student>();
 
         public Student(string name, string surname, int group, string faculty)
         {
@@ -24,16 +21,18 @@ namespace BlazorApp1.Data
             faculty = Faculty;
         }
 
-        
+        public static void AddToList(Student student)
+        { 
+            stud.Add(student);
+        }
         
         public static List<Student> GetStudents()
         {
-            List<Student> stud = new List<Student>();
-            stud.Add(new Student() { Name = "Олег", Surname = "Егоров", Group = 321, Faculty = "Программист" });
-            stud.Add(new Student() { Name = "Талгат", Surname = "Яруллин", Group = 321, Faculty = "Программист" });
-            stud.Add(new Student() { Name = "Александр", Surname = "Краснов", Group = 321, Faculty = "Программист" });
-            stud.Add(new Student() { Name = "Полина", Surname = "Авдеева", Group = 325, Faculty = "Веб-разработчик" });
-            stud.Add(new Student() { Name = "Раиля", Surname = "Бакирова", Group = 324, Faculty = "Веб-разработчик" });
+            //stud.Add(new Student() { Name = "Олег", Surname = "Егоров", Group = 321, Faculty = "Программист" });
+            //stud.Add(new Student() { Name = "Талгат", Surname = "Яруллин", Group = 321, Faculty = "Программист" });
+            //stud.Add(new Student() { Name = "Александр", Surname = "Краснов", Group = 321, Faculty = "Программист" });
+            //stud.Add(new Student() { Name = "Полина", Surname = "Авдеева", Group = 325, Faculty = "Веб-разработчик" });
+            //stud.Add(new Student() { Name = "Раиля", Surname = "Бакирова", Group = 324, Faculty = "Веб-разработчик" });
             return stud;
         }
 
