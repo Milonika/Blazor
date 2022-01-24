@@ -40,13 +40,13 @@ namespace BlazorApp1.Data
             return stud;
         }
 
-        public void Add(Student studi)
+        public static void Add(Student studi)
         {
             MongoClient client = new MongoClient();
             var db = client.GetDatabase("Persons");
             var collection = db.GetCollection<Student>("person");
             collection.InsertOne(studi);
-            var list = collection.Find(x => true).ToList(); // лист передаю в компонетнт
+            //var list = collection.Find(x => true).ToList(); // лист передаю в компонетнт
         }
 
         static void Main(string[] args)
