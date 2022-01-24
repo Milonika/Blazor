@@ -1,4 +1,7 @@
-﻿@using BlazorApp1.Data
+﻿@using MongoDB.Bson;
+@using MongoDB.Bson.Serialization.Attributes;
+@using MongoDB.Driver;
+@using BlazorApp1.Data
 @page "/Hello"
 
 <h1>Hi, here is some info!</h1>
@@ -121,7 +124,7 @@ else if (studentslst == null && GameList == null)
         GameList = null;
         studentslst = null;
     }
-
+    
 }
 
 

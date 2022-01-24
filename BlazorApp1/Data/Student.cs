@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver;
 
 namespace BlazorApp1.Data
 {
@@ -37,7 +40,27 @@ namespace BlazorApp1.Data
             return stud;
         }
 
+        public void Add(Student studi)
+        {
+            MongoClient client = new MongoClient();
+            var db = client.GetDatabase("Persons");
+            var collection = db.GetCollection<Student>("person");
+            collection.InsertOne(studi);
+            var list = collection.Find(x => true).ToList(); // лист передаю в компонетнт
+        }
 
+        static void Main(string[] args)
+        {
+            MongoClient dbClient = new MongoClient();
+
+            var dbList = dbClient.ListDatabases().ToList();
+
+            Console.WriteLine("The list of databases on this server is: ");
+            foreach (var db in dbList)
+            {
+                Console.WriteLine(db);
+            }
+        }
 
     }
 

@@ -1,4 +1,8 @@
-﻿@page "/fetchdata"
+﻿@using MongoDB.Bson;
+@using MongoDB.Bson.Serialization.Attributes;
+@using MongoDB.Driver;
+
+@page "/fetchdata"
 
 @using BlazorApp1.Data
 @inject WeatherForecastService ForecastService
