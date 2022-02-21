@@ -40,27 +40,52 @@ namespace BlazorApp1.Data
             return stud;
         }
 
-        public static void Add(Student studi)
+        public static void AddInDB(Student studi)
         {
             MongoClient client = new MongoClient();
             var db = client.GetDatabase("Persons");
             var collection = db.GetCollection<Student>("person");
             collection.InsertOne(studi);
-            //var list = collection.Find(x => true).ToList(); // лист передаю в компонетнт
+            //var listik = collection.Find(x => true).ToList(); // лист передаю в компонетнт
+            var listic = stud.Find(x => x.Name.Contains(""));
         }
 
-        static void Main(string[] args)
+        //public static List<Student>  Vor()
+        //{
+           
+        //    var listic = stud.Find(x => x.Name.Contains(""));
+        //    return listic;
+        //}
+
+        public override bool Equals(object obj)
         {
-            MongoClient dbClient = new MongoClient();
-
-            var dbList = dbClient.ListDatabases().ToList();
-
-            Console.WriteLine("The list of databases on this server is: ");
-            foreach (var db in dbList)
-            {
-                Console.WriteLine(db);
-            }
+            if (obj == null) return false;
+            Student objAsPart = obj as Student;
+            if (objAsPart == null) return false;
+            else return Equals(objAsPart);
         }
+
+        public override int GetHashCode()
+        {
+            return Convert.ToInt32(Name);
+        }
+        public bool Equals(Student other)
+        {
+            if (other == null) return false;
+            return (this.Name.Equals(other.Name));
+        }
+        //static void Main(string[] args)
+        //{
+        //    MongoClient dbClient = new MongoClient();
+
+        //    var dbList = dbClient.ListDatabases().ToList();
+
+        //    Console.WriteLine("The list of databases on this server is: ");
+        //    foreach (var db in dbList)
+        //    {
+        //        Console.WriteLine(db);
+        //    }
+        //}
 
     }
 
