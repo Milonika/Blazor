@@ -1,5 +1,9 @@
 ﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">BlazorApp1</a>
+    <a class="navbar-brand"
+       href=""> 
+        Три метра над 
+        уровнем<br>неба
+    </a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,22 +13,27 @@
     <ul class="nav flex-column">
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+                <span class="oi iconify" data-icon="oi:home" aria-hidden="true"></span> ГЛАВНАЯ
             </NavLink>
         </li>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
+                <span class="oi iconify" data-icon="bi:info-circle" data-width="18" data-height="18" data-flip="horizontal" aria-hidden="true"></span> О НАС
             </NavLink>
         </li>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+                <span class="oi iconify" data-icon="mdi:account-group" data-width="18" data-height="18" data-flip="horizontal" aria-hidden="true"></span> СОТРУДНИКИ
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Programm">
+                <span class="oi iconify" data-icon="mdi:gamepad-round-outline" aria-hidden="true"></span>ПРОГРАММА
             </NavLink>
         </li>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="Hello">
-                <span class="oi oi-moon" aria-hidden="true"></span> Hello World
+                <span class="oi iconify" data-icon="mdi:badge-account-horizontal-outline" data-width="18" data-height="18" aria-hidden="true"></span>ПАЦИЕНТЫ
             </NavLink>
         </li>
     </ul>
